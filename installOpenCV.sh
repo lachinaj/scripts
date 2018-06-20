@@ -17,7 +17,7 @@ if [ $valret = 0 ]; then
 			"Python2")	WithPython2="ON"	;;
 			"Python3")	WithPython3="ON"	;;
 			"Non free")	WithNonFree="ON"	;;
-			"Contrib modules") Contrib="-DOPENCV_EXTRA_MODULE_PATH=$HOME/opencv_contrib/modules"	;;
+			"Contrib modules") WithContrib="ON"	;;
 		esac
 	done
 else
@@ -71,11 +71,12 @@ cd install
 
 git clone https://github.com/opencv/opencv.git
 
-if [[ $ContribModule =~ ^[Yy]$ ]]; then
+if [[ $WithContrib -eq "ON" ]]; then
 	git clone https://github.com/opencv/opencv_contrib.git
 	cd opencv_contrib
 	git checkout $Version
 	cd ..
+	$Contrib="-DOPENCV_EXTRA_MODULE_PATH=$HOME/install/opencv_contrib/modules"
 fi
 
 cd opencv
