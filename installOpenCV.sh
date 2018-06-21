@@ -72,11 +72,11 @@ cd install
 git clone https://github.com/opencv/opencv.git
 
 if [[ $WithContrib -eq "ON" ]]; then
+	Contrib="-DOPENCV_EXTRA_MODULES_PATH=$HOME/install/opencv_contrib/modules "
 	git clone https://github.com/opencv/opencv_contrib.git
 	cd opencv_contrib
 	git checkout $Version
 	cd ..
-	$Contrib="-DOPENCV_EXTRA_MODULE_PATH=$HOME/install/opencv_contrib/modules"
 fi
 
 cd opencv
@@ -86,7 +86,7 @@ cd build
 
 if [[ $WithCuda -eq "ON" ]]
 then
-	$cuda="-DWITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DCUDA_ARCH_BIN='3.0 3.5 5.0 5.3 6.0 6.1 6.2' -DCUDA_ARCH_PTX=\"\" "
+	cuda="-DWITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda -DCUDA_ARCH_BIN='3.0 3.5 5.0 5.3 6.0 6.1 6.2' -DCUDA_ARCH_PTX=\"\" "
 fi
 
 cmake \
@@ -101,7 +101,7 @@ cmake \
 	-DBUILD_opencv_java=OFF \
 	-DBUILD_opencv_python2=$WithPython2 \
 	-DBUILD_opencv_python3=$WithPython3 \
-	-DENABLE_NONFREE=$WithNonFree \
+	-DOPENCV_ENABLE_NONFREE=$WithNonFree \
 	$Contrib \
 	-DENABLE_NEON=ON \
 	-DWITH_OPENCL=OFF \
