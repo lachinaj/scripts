@@ -51,6 +51,7 @@ sudo apt-get install \
 	libeigen3-dev \
 	libtbb-dev \
 	libgtk2.0-dev \
+	cmake \
 	pkg-config -y
 
 if [[ $WithPython2 -eq "ON" ]]
