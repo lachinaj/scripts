@@ -29,7 +29,8 @@ menu()
 {
 	cmd=(dialog --clear --backtitle "Install scripts" --title "Install" --menu "What do you want to do?" 20 100 20)
 	options=("1" "OpenCV 3.3.1 L4T" 
-		 "2" "Mono complete" 
+		 "2" "Mono complete"
+		 "3" "Microsoft SQL Server" 
 		)
 	choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -43,6 +44,9 @@ menu()
 			2)
 				clear
 				./installMono.sh
+				;;
+			3)	clear
+				./installSQLServer.sh
 				;;
 		esac
 	else

@@ -5,7 +5,8 @@ It's create it for my personnal use, but I write it to be use for all.
 
 ## ChangeLog
 
-#### Initial version
-- Install
-	- OpenCV
+#### Install
+- OpenCV
+- Mono
+- Microsoft SQL Server
 
